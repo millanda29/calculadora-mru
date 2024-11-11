@@ -2,9 +2,9 @@ FROM python:3.9-slim
 
 WORKDIR /app
 
-COPY app.py /app/
+COPY . /app/
 
-RUN pip install nicegui
+RUN pip install -r requirements.txt
 
 EXPOSE 8080
 
