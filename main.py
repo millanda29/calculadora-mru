@@ -1,7 +1,7 @@
 import os
 from nicegui import ui
 
-port = int(os.environ.get("PORT", 8080))  # Obtén el puerto de Heroku o usa 8080 por defecto
+port = int(os.environ.get("PORT", 8080))
 
 def calcular_distancia(velocidad, tiempo):
     return velocidad * tiempo
@@ -32,15 +32,14 @@ def calcular():
     except ValueError:
         resultado_label.text = "Por favor, ingresa valores numéricos válidos."
 
-with ui.column().classes('justify-center items-center w-full h-screen bg-gray-100'):
+with ui.column().classes('justify-center items-center w-full h-screen bg-gray-100 p-4'):
     ui.label("Calculadora de Movimiento Rectilíneo Uniforme (MRU)").classes('text-3xl font-bold mb-6 text-center')
     ui.label("Selecciona lo que deseas calcular:").classes('text-lg mb-2')
     opcion = ui.radio(['Distancia', 'Velocidad', 'Tiempo'], value='Distancia').classes('mb-4')
-    distancia_input = ui.input(label="Distancia (m)").classes('my-2 w-1/3')
-    velocidad_input = ui.input(label="Velocidad (m/s)").classes('my-2 w-1/3')
-    tiempo_input = ui.input(label="Tiempo (s)").classes('my-2 w-1/3')
-    ui.button("Calcular", on_click=calcular).classes(
-        'my-4 bg-blue-500 text-white font-bold px-4 py-2 rounded shadow hover:bg-blue-600')
+    distancia_input = ui.input(label="Distancia (m)").classes('my-2 w-full sm:w-1/3')
+    velocidad_input = ui.input(label="Velocidad (m/s)").classes('my-2 w-full sm:w-1/3')
+    tiempo_input = ui.input(label="Tiempo (s)").classes('my-2 w-full sm:w-1/3')
+    ui.button("Calcular", on_click=calcular).classes('my-4 bg-blue-500 text-white font-bold px-4 py-2 rounded shadow hover:bg-blue-600 w-full sm:w-auto')
     resultado_label = ui.label().classes('text-xl font-semibold mt-6 text-center')
 
-ui.run(port=port)  # Asegúrate de que la app escuche en el puerto correcto
+ui.run(port=port)
