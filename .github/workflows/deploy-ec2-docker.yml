@@ -78,11 +78,11 @@ jobs:
             sudo service docker start
 
             # Pull última versión de Docker Hub
-            docker pull ${{ secrets.DOCKER_USERNAME }}/calculadora-mru:latest
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/calculadora-mru:latest
 
             # Detener y eliminar cualquier contenedor en ejecución con el mismo nombre
-            docker ps -q --filter "name=calculadora-mru" | xargs -r docker stop
-            docker ps -aq --filter "name=calculadora-mru" | xargs -r docker rm
+            sudo docker ps -q --filter "name=calculadora-mru" | xargs -r docker stop
+            sudo docker ps -aq --filter "name=calculadora-mru" | xargs -r docker rm
 
             # Correr la nueva versión
-            docker run -d --name calculadora-mru -p 80:8000 ${{ secrets.DOCKER_USERNAME }}/calculadora-mru:latest
+            sudo docker run -d --name calculadora-mru -p 80:8000 ${{ secrets.DOCKER_USERNAME }}/calculadora-mru:latest
