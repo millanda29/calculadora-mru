@@ -85,4 +85,4 @@ jobs:
             sudo docker ps -aq --filter "name=calculadora-mru" | xargs -r docker rm
 
             # Correr la nueva versión
-            sudo docker run -d --name calculadora-mru -p 80:8000 ${{ secrets.DOCKER_USERNAME }}/calculadora-mru:latest
+            sudo docker run -d --name calculadora-mru -p 80:8080 ${{ secrets.DOCKER_USERNAME }}/calculadora-mru:latest
